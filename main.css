@@ -1,3 +1,7 @@
+body {
+	background-color: #E8E8E8;
+}
+
 #game-board {
 	padding: 10px 0;
 	height: 1450px;
