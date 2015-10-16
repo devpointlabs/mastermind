@@ -1,20 +1,20 @@
 #game-board {
 	padding: 10px 0;
-	height: 860px;
+	height: 1450px;
 	background-color: beige;
 	border-radius: 5px;
 }
 
 .guess-row {
-	margin: 10px 0;
-	height: 50px;
+	margin: 20px 0;
+	height: 80px;
 }
 
 .game-peg {
-	border: 5px solid black;
-	border-radius: 30px;
-	height: 50px;
-	width: 50px;
+	border: 8px solid black;
+	border-radius: 40px;
+	height: 80px;
+	width: 80px;
 	margin: 0 10px;
 	display: inline-block;
 	cursor: pointer;
@@ -49,17 +49,21 @@
 }
 
 .feedback {
-	position: relative;
-	height: 50px;
+	height: 80px;
 }
 
 .peg-container {
-	position: absolute;
-	bottom: 0px;
+	position: relative;
+	top: 20px;
+}
+
+.btn.eval {
+	position: relative;
+	top: 20px;
 }
 
 .feedback-peg {
-	font-size: 20px;
+	font-size: 40px;
 }
 
 .feedback-peg.exact {
