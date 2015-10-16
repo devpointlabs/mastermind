@@ -76,9 +76,17 @@ mastermind.controller('game-ctrl', function($scope){
 			}
 		});
 		if(rowToBeEvaluated.feedback.exact.length === 4){
-			alert('you win')
+			alert('you win');
+			$scope.currentRow = 0;
 		}
 		$scope.currentRow++;
+	}
+
+	$scope.isLiveRow = function(row){
+		if(row.id === $scope.currentRow){
+			console.log(row.id, $scope.currentRow)
+			return true;
+		}
 	}
 
 })
