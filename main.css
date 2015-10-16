@@ -66,6 +66,11 @@ body {
 	top: 20px;
 }
 
+.btn.example-eval {
+	position: relative;
+	bottom: 10px;
+}
+
 .feedback-peg {
 	font-size: 40px;
 }
@@ -74,3 +79,11 @@ body {
 	color: red;
 }
 
+div {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}

@@ -1,5 +1,3 @@
-var mastermind = angular.module('mastermind', []);
-
 mastermind.controller('game-ctrl', function($scope){
 	$scope.rows = [];
 
@@ -75,7 +73,6 @@ mastermind.controller('game-ctrl', function($scope){
 				rowToBeEvaluated.feedback.colorMatch.push(guess);
 			}
 		});
-		console.log(rowToBeEvaluated.feedback.exact)
 		if(rowToBeEvaluated.feedback.exact.length === 4){
 			alert('you win');
 			$scope.currentRow = 0;
