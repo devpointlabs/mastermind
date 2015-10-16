@@ -1,40 +1,35 @@
-<html>
+<html ng-app="mastermind">
 <head>
 	<meta charset="UTF-8">
 	<title>Mastermind</title>
 	<link rel="stylesheet" href="main.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
 </head>
 <body>
-	<div class="container">
+	<div class="container" ng-controller="game-ctrl">
 		<div class="row">
 			<div class="col-xs-offset-1 col-md-offset-2 col-lg-offset-3 col-xs-10 col-md-8 col-lg-6 page-header">
 			  <h1>Mastermind <small>Can you break the code?</small></h1>
 			</div>
 		</div>
 		<div class="row">
+			<div class="col-xs-offset-1">
+				<button class="btn btn-success" ng-click="evaluate()">Evaluate</button>
+			</div>
+		</div>
+		<div class="row">
 			<div id="game-board" class="col-xs-offset-1 col-md-offset-2 col-lg-offset-3 col-xs-10 col-md-8 col-lg-6">
-				<div class="row">
+				<div class="row" ng-repeat="row in rows">
 					<div class="col-xs-offset-1 col-xs-8 guess-row">
-						<div class="game-peg">
-
-						</div>
-						<div class="game-peg">
-
-						</div>
-						<div class="game-peg">
-
-						</div>
-						<div class="game-peg">
+						<div ng-attr-data-color="{{peg.color}}" ng-repeat="peg in row.guesses" class="game-peg" ng-click="toggleColor(peg, row)">
 
 						</div>
 					</div>
 					<div class="col-xs-3 feedback">
 						<div class="peg-container">
-							<span class="glyphicon glyphicon-heart feedback-peg" aria-hidden="true"></span>
-							<span class="glyphicon glyphicon-heart feedback-peg" aria-hidden="true"></span>
-							<span class="glyphicon glyphicon-heart feedback-peg" aria-hidden="true"></span>
-							<span class="glyphicon glyphicon-heart feedback-peg" aria-hidden="true"></span>
+							<span class="glyphicon glyphicon-heart feedback-peg exact" aria-hidden="true" ng-repeat="exactMatch in row.feedback.exact"></span>
+							<span class="glyphicon glyphicon-heart-empty feedback-peg" aria-hidden="true" ng-repeat="colorMatch in row.feedback.colorMatch"></span>
 						</div>
 					</div>
 				</div>

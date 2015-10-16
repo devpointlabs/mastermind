@@ -1,10 +1,12 @@
 #game-board {
-	height: 500px;
+	padding: 10px 0;
+	height: 860px;
 	background-color: beige;
 	border-radius: 5px;
 }
 
 .guess-row {
+	margin: 10px 0;
 	height: 50px;
 }
 
@@ -15,6 +17,35 @@
 	width: 50px;
 	margin: 0 10px;
 	display: inline-block;
+	cursor: pointer;
+}
+
+.game-peg:hover {
+	border-color: #666;
+}
+
+.game-peg[data-color="red"]{
+	background-color: red;
+}
+
+.game-peg[data-color="blue"]{
+	background-color: blue;
+}
+
+.game-peg[data-color="green"]{
+	background-color: green;
+}
+
+.game-peg[data-color="purple"]{
+	background-color: purple;
+}
+
+.game-peg[data-color="orange"]{
+	background-color: orange;
+}
+
+.game-peg[data-color="white"]{
+	background-color: white;
 }
 
 .feedback {
@@ -29,5 +60,9 @@
 
 .feedback-peg {
 	font-size: 20px;
+}
+
+.feedback-peg.exact {
+	color: red;
 }
 
