@@ -16,12 +16,6 @@ mastermind.config(function($stateProvider, $urlRouterProvider){
 		})
 		.state('tips', {
 			url: "/tips",
-			templateUrl: "../templates/tips.html",
-			controller: "tips-ctrl"
-		})
-		.state('leaderboard', {
-			url: "/leaderboard",
-			templateUrl: "../templates/leaderboard.html",
-			controller: "leaderboard-ctrl"
+			templateUrl: "../templates/tips.html"
 		})
 })
