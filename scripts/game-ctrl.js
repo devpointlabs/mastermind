@@ -3,15 +3,29 @@ mastermind.controller('game-ctrl', function($scope){
 
 	$scope.currentRow = 1;
 
-	$scope.secretCode = ['red', 'red', 'blue', 'blue'];
+	$scope.secretConfiguration = [
+		{
+			'position': 1,
+			'color': 'red'
+		},
+		{
+			'position': 2,
+			'color': 'red'
+		},
+		{
+			'position': 3,
+			'color': 'blue'
+		},
+		{
+			'position': 4,
+			'color': 'blue'
+		}
+	];
 
 	var Row = function(id){
 		this.id = id;
 		this.guesses = [];
-		this.feedback = {
-			"exact": [],
-			"colorMatch": []
-		};
+		this.feedback = [];
 
 		for(var j=0;j < 4; j++){
 			this.guesses.push(new Peg());
@@ -54,26 +68,37 @@ mastermind.controller('game-ctrl', function($scope){
 		}
 	}
 
-	function matchesAnyPeg(color){
-		var bool = false;
-		$scope.secretCode.forEach(function(secretColor){
-			if(color === secretColor){
-				bool = true;
-			}
-		})
-		return bool;
+	function buildFeedback(guesses, secretCode){
+		var feedback = [];
+		debugger;
+		guesses.forEach(function(guess, guessIdx){
+			for(var k=guessIdx;k < secretCode.length; k++){
+				if(guess.color === secretCode[k].color && guessIdx === k){
+					feedback.push({'type': 'exact', 'idx': k});
+					break;
+				} else if (guess.color ===secretCode[k].color){
+					feedback.push({'type': 'color', 'idx': k});
+					break;
+				}
+			};
+		});
+		return feedback;
 	}
 
 	$scope.evaluate = function(){
 		var rowToBeEvaluated = $scope.rows[($scope.currentRow - 1)];
-		rowToBeEvaluated.guesses.forEach(function(guess, idx){
-			if(guess.color === $scope.secretCode[idx]){
-				rowToBeEvaluated.feedback.exact.push(guess);
-			} else if (matchesAnyPeg(guess.color) === true){
-				rowToBeEvaluated.feedback.colorMatch.push(guess);
+		var copyofSecret = angular.copy($scope.secretConfiguration, copyofSecret);
+		var exactCount = 0;
+
+		rowToBeEvaluated.feedback = buildFeedback(rowToBeEvaluated.guesses, copyofSecret);
+
+		rowToBeEvaluated.feedback.forEach(function(heart){
+			if(heart.type === 'exact'){
+				exactCount++;
 			}
 		});
-		if(rowToBeEvaluated.feedback.exact.length === 4){
+
+		if(exactCount === 4){
 			alert('you win');
 			$scope.currentRow = 0;
 		} else {

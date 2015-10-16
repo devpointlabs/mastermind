@@ -8,7 +8,8 @@
 			<div class="col-xs-2 feedback">
 				<div class="peg-container">
 					<button class="btn btn-lg btn-success eval" ng-click="evaluate()" ng-show="row.id === currentRow">Evaluate</button>
-					<span class="glyphicon glyphicon-heart feedback" ng-class="{ 'exact': match.type === 'exact' }" ng-repeat="match in row.feedback"></span>
+					<span class="glyphicon glyphicon-heart feedback-peg exact" aria-hidden="true" ng-repeat="exactMatch in row.feedback.exact"></span>
+					<span class="glyphicon glyphicon-heart-empty feedback-peg" aria-hidden="true" ng-repeat="colorMatch in row.feedback.colorMatch"></span>
 				</div>
 			</div>
 		</div>

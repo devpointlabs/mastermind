@@ -52,10 +52,6 @@ body {
 	background-color: white;
 }
 
-.feedback {
-	height: 80px;
-}
-
 .peg-container {
 	position: relative;
 	top: 20px;
@@ -71,11 +67,14 @@ body {
 	bottom: 10px;
 }
 
-.feedback-peg {
+.feedback {
 	font-size: 40px;
 }
+.feedback.example {
+	font-size: 20px;
+}
 
-.feedback-peg.exact {
+.feedback.exact {
 	color: red;
 }
 
