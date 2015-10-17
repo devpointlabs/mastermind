@@ -6,16 +6,16 @@ mastermind.config(function($stateProvider, $urlRouterProvider){
 	$stateProvider
 		.state('game', {
 			url:"/",
-			templateUrl: "../templates/game-board.html",
+			templateUrl: "game-board.html",
 			controller: "game-ctrl"
 		})
 		.state('instructions', {
 			url: "/instructions",
-			templateUrl: "../templates/instructions.html",
+			templateUrl: "instructions.html",
 			controller: "instructions-ctrl"
 		})
 		.state('tips', {
 			url: "/tips",
-			templateUrl: "../templates/tips.html"
+			templateUrl: "tips.html"
 		})
 })
