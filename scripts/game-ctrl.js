@@ -5,19 +5,19 @@ mastermind.controller('game-ctrl', function($scope){
 
 	$scope.secretConfiguration = [
 		{
+			'position': 0,
+			'color': 'red'
+		},
+		{
 			'position': 1,
 			'color': 'red'
 		},
 		{
 			'position': 2,
-			'color': 'red'
-		},
-		{
-			'position': 3,
 			'color': 'blue'
 		},
 		{
-			'position': 4,
+			'position': 3,
 			'color': 'blue'
 		}
 	];
@@ -33,7 +33,8 @@ mastermind.controller('game-ctrl', function($scope){
 	}
 
 	var Peg = function(){
-		this.color = ''
+		this.color = '',
+		this.evaluated = false
 	}
 
 	for(var i=1;i <= 12;i++){
@@ -67,17 +68,39 @@ mastermind.controller('game-ctrl', function($scope){
 			}
 		}
 	}
+	function secretToDict(){
+		var dict = {};
+		$scope.secretConfiguration.forEach(function(secret){
+			if(typeof dict[secret.color] === 'number'){
+				dict[secret.color]++;
+			} else {
+				dict[secret.color] = 1;
+			}
+		});
+		return dict;
+	}
 
 	function buildFeedback(guesses, secretCode){
 		var feedback = [];
-		debugger;
+		var secretDict = secretToDict();
+
+		//check for exact matches first
 		guesses.forEach(function(guess, guessIdx){
-			for(var k=guessIdx;k < secretCode.length; k++){
-				if(guess.color === secretCode[k].color && guessIdx === k){
+			for(var k=0;k < secretCode.length; k++){
+				if(guess.color === secretCode[guessIdx].color){
 					feedback.push({'type': 'exact', 'idx': k});
+					secretDict[guess.color]--;
+					guess.evaluated = true;
 					break;
-				} else if (guess.color ===secretCode[k].color){
+				}
+			}
+		});
+		//check for partial matches second
+		guesses.forEach(function(guess, guessIdx){
+			for(var k=0;k < secretCode.length; k++){
+				if (guess.color === secretCode[k].color && secretDict[guess.color] > 0 && guess.evaluated === false){
 					feedback.push({'type': 'color', 'idx': k});
+					secretDict[guess.color]--;
 					break;
 				}
 			};
