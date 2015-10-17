@@ -1,3 +1,8 @@
+<div class="row" ng-show="currentRow === 0">
+	<div class="col-lg-offset-2 col-xs-12 col-lg-8">
+		<h1>Congratulations! <small>You solved it in <span ng-bind="numberOfAttempts"></span> attempts!</small> <a ui-sref="game" ui-sref-opts="{reload:true}" class="btn btn-lg btn-success">Try again!</a></h1>
+	</div>
+</div>
 <div class="row">
 	<div id="game-board" class="col-lg-offset-2 col-xs-12 col-lg-8">
 		<div class="row" ng-repeat="row in rows">

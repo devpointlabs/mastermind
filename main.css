@@ -1,6 +1,11 @@
-body {
-	background-color: #E8E8E8;
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: #E8E8E8;
 }
+
 
 #game-board {
 	padding: 10px 0;

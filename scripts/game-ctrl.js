@@ -90,6 +90,8 @@ mastermind.controller('game-ctrl', function($scope){
 				if(guess.color === secretCode[guessIdx].color){
 					feedback.push({'type': 'exact', 'idx': k});
 					secretDict[guess.color]--;
+					//mark this guess as evaluated, so we don't create
+					//partial matches with the same one later.
 					guess.evaluated = true;
 					break;
 				}
@@ -122,7 +124,7 @@ mastermind.controller('game-ctrl', function($scope){
 		});
 
 		if(exactCount === 4){
-			alert('you win');
+			$scope.numberOfAttempts = $scope.currentRow;
 			$scope.currentRow = 0;
 		} else {
 			$scope.currentRow++;
