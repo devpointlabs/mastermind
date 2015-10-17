@@ -6,28 +6,28 @@ mastermind.controller('instructions-ctrl', function($scope){
 		{color: 'purple'}
 	];
 
-	$scope.toggleColor = function(peg){
-		switch (peg.color) {
+	$scope.toggleColor = function(circle){
+		switch (circle.color) {
 			case '':
-				peg.color = 'red';
+				circle.color = 'red';
 				break;
 			case 'red':
-				peg.color = 'blue';
+				circle.color = 'blue';
 				break;
 			case 'blue':
-				peg.color = 'green';
+				circle.color = 'green';
 				break;
 			case 'green':
-				peg.color = 'purple';
+				circle.color = 'purple';
 				break;
 			case 'purple':
-				peg.color = 'orange';
+				circle.color = 'orange';
 				break;
 			case 'orange':
-				peg.color = 'white';
+				circle.color = 'white';
 				break;
 			case 'white':
-				peg.color = 'red';
+				circle.color = 'red';
 				break;
 		}
 
